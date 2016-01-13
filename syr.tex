@@ -1,0 +1,51 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[czech]{babel}
+\usepackage[]{geometry}
+\usepackage{amsfonts,amsmath,amssymb}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{booktabs}
+
+\usepackage{custom}
+%\usepackage[draft,inline]{showlabels}
+
+\renewcommand{\phi}{\varphi}
+\renewcommand{\theta}{\vartheta}
+\newcommand{\s}{{,}}
+
+\begin{document}
+  \section{Sýr}
+  Sýr s dírami splňuje:
+  \begin{itemize}
+    \item čím více sýra, tím více má děr
+    \item čím více děr, tím méně sýra
+  \end{itemize}
+  \(\implies\) čím více sýra, tím méně sýra 
+
+  Co s tím? Jedna z možností je použít diferenciálního počtu.
+  Definujme funkce \(s, d\), kde \(s\) je množství sýra a \(d\) je množství děr.
+  Neznáme přesnou závislost množství sýra. Sýr s časem přibývá a ubývá, ale předpokládejme, že úlohu řešíme v dostatečně malém časovém okamžiku \(\tau \to 0\). V takovém případě můžeme uvažovat lineární přírůstek množství děr v závislosti na množství sýra
+  \begin{equation}
+    d'(s) = a_1 s,
+    \label{labEqPrirustekDer}
+  \end{equation}
+  kde \(a_1\) je nějaká neznámá konstanta \(a_1 > 0\). Obdobně dostaneme rovnici pro přírůstek sýra
+  \begin{equation}
+    s'(d) = - a_2 d,
+    \label{labEqPrirustekSyra}
+  \end{equation}
+  kde \(a_2 > 0\).
+  Derivací rovnice \eqref{labEqPrirustekSyra} a dosazením do \eqref{labEqPrirustekDer} dostaneme diferenciální rovnici pro množství sýra
+  \begin{equation}
+    s''(d) = -\frac{a_1}{a_2} s(d)
+  \end{equation}
+  S řešením
+  \begin{equation}
+    s(d) = A \sin{\omega d} + B \cos{\omega d}
+  \end{equation}
+  kde \(\omega = \sqrt{\frac{a_1}{a_2}}\). Konstanty \(A\) a \(B\) určíme z počátečních podmínek. Z rovnice \eqref{labEqPrirustekSyra} vidíme \(s'(0) = 0\), tedy \(A = 0\). Konstanta \(B \neq 0\), neboť případ \(B = 0\), kdy nemáme žádný sýr, je triviální.
+  
+  Zřejmě pro malé \(\tau\) se pohybujeme na malém \(\delta\) okolí počátečního množství děr \(d_0\), ve kterém platí, že \(\cos' d |_{d=d_0} > 0\). Tedy i pro \(d \in U(d_0, \delta) \) platí \(\cos' d > 0\). Potvrdili jsme tedy platnost výsledného tvrzení pro malé změny množství sýra.
+\end{document}
